@@ -3,6 +3,12 @@
 {% block content %}
 	<main class = "container signup-section">
 		<div class="section-content">
+			{% for message in get_flashed_messages() %}
+				<div class="alert alert-warning fade in">
+    				<a href="{{ url_for('signup') }}" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+    				<strong>Warning!</strong> {{ message }}
+				</div>
+			{% endfor %}
 			<h2>Create an account</h2>
 			<form method="POST" action = "/signup">
 				{{ form.hidden_tag() }}
